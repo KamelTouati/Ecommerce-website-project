@@ -13,3 +13,11 @@ def cart(request):
 def checkout(request):
     context = {}
     return render (request, 'store/pages/checkout.html', context)
+
+def login(request):
+    context = {}
+    return render (request, 'store/pages/login.html', context)
+
+def signup(request):
+    context = {}
+    return render (request, 'store/pages/signup.html', context)

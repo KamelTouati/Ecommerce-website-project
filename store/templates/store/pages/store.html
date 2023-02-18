@@ -3,104 +3,106 @@
 {% load static %}
 
 {% block content %}
-    <div class="grid grid-cols-4 my-10 gap-3 mx-3">
-            
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img class="rounded-t-lg w-[300px]" src="{% static 'store/images/MX3X2.jpg' %}" alt="" />
-            </a>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Beats Studio3 Wireless Over‑Ear Headphones - Matte Black</h5>
-                </a>
-                <br>
-                <div>
-                    <a href="#" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            add to cart
-                        </span>
-                    </a>
-                    <a href="#" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            view
-                        </span>
-                    </a>
-                    <h1 class="relative inline-flex text-xl font-bold">179.00$</h1>
-                </div>
-            </div>
+<div class="row m-4">
+    <div class="col-lg-3 my-2 card">
+        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product</strong></h6>
+            <hr>
+
+            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+
         </div>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img class="rounded-t-lg w-[300px]" src="{% static 'store/images/MX3X2.jpg' %}" alt="" />
-            </a>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Beats Studio3 Wireless Over‑Ear Headphones - Matte Black</h5>
-                </a>
-                <br>
-                <div>
-                    <a href="#" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            add to cart
-                        </span>
-                    </a>
-                    <a href="#" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            view
-                        </span>
-                    </a>
-                    <h1 class="relative inline-flex text-xl font-bold">179.00$</h1>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img class="rounded-t-lg w-[300px]" src="{% static 'store/images/MX3X2.jpg' %}" alt="" />
-            </a>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Beats Studio3 Wireless Over‑Ear Headphones - Matte Black</h5>
-                </a>
-                <br>
-                <div>
-                    <a href="#" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            add to cart
-                        </span>
-                    </a>
-                    <a href="#" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            view
-                        </span>
-                    </a>
-                    <h1 class="relative inline-flex text-xl font-bold">179.00$</h1>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img class="rounded-t-lg w-[300px]" src="{% static 'store/images/MX3X2.jpg' %}" alt="" />
-            </a>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Beats Studio3 Wireless Over‑Ear Headphones - Matte Black</h5>
-                </a>
-                <br>
-                <div>
-                    <a href="#" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            add to cart
-                        </span>
-                    </a>
-                    <a href="#" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            view
-                        </span>
-                    </a>
-                    <h1 class="relative inline-flex text-xl font-bold">179.00$</h1>
-                </div>
-            </div>
-        </div>
-        
     </div>
+
+    <div class="col-lg-3 my-2 card">
+        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product</strong></h6>
+            <hr>
+            
+            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+            
+        </div>
+    </div>
+
+    <div class="col-lg-3 my-2 card">
+        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product</strong></h6>
+            <hr>
+
+            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+
+        </div>
+    </div>
+    <div class="col-lg-3 my-2 card">
+        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product</strong></h6>
+            <hr>
+
+            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+
+        </div>
+    </div>
+    <div class="col-lg-3 my-2 card">
+        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product</strong></h6>
+            <hr>
+
+            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+
+        </div>
+    </div>
+
+    <div class="col-lg-3 my-2 card">
+        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product</strong></h6>
+            <hr>
+            
+            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+            
+        </div>
+    </div>
+
+    <div class="col-lg-3 my-2 card">
+        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product</strong></h6>
+            <hr>
+
+            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+
+        </div>
+    </div>
+    <div class="col-lg-3 my-2 card">
+        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Product</strong></h6>
+            <hr>
+
+            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+
+        </div>
+    </div>
+</div>
 {% endblock content %}
