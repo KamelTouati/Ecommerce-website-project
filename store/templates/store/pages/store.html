@@ -3,106 +3,23 @@
 {% load static %}
 
 {% block content %}
-<div class="row m-4">
+{% if user.is_authenticated %}
+    <h1 class="container mt-2">Hi, {{user.username}}</h1>
+{% endif %}
+<div class="row m-4 container mx-auto">
+    {% for product in products %}
     <div class="col-lg-3 my-2 card">
-        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
+        <img class="thumbnail card-img-top" src="{{product.imageURL}}">
+        <div class="box-element product mt-auto mb-3">
+            <h6><strong>{{product.name}}</strong></h6>
             <hr>
 
             <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
             <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+            <h5 style="display: inline-block; float: right"><strong>{{product.price|floatformat:2}}$</strong></h4>
 
         </div>
     </div>
-
-    <div class="col-lg-3 my-2 card">
-        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            
-            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
-            
-        </div>
-    </div>
-
-    <div class="col-lg-3 my-2 card">
-        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-
-            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
-
-        </div>
-    </div>
-    <div class="col-lg-3 my-2 card">
-        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-
-            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
-
-        </div>
-    </div>
-    <div class="col-lg-3 my-2 card">
-        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-
-            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
-
-        </div>
-    </div>
-
-    <div class="col-lg-3 my-2 card">
-        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-            
-            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
-            
-        </div>
-    </div>
-
-    <div class="col-lg-3 my-2 card">
-        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-
-            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
-
-        </div>
-    </div>
-    <div class="col-lg-3 my-2 card">
-        <img class="thumbnail card-img-top" src="{% static 'store/images/placeholder.png' %}">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-
-            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
-
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% endblock content %}

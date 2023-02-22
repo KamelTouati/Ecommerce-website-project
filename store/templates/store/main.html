@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'store/js/jQuery-3.6.3.js' %}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/main.css' %}">
@@ -17,14 +15,14 @@
     <!-- ==================================  START NAVBAR ================================== -->
     {% include 'store/parts/navbar.html' %}
     <!-- ==================================  END NAVBAR ================================== -->
-    
-    {% block content %}
-    
-    {% endblock content %}
+        {% block content %}
+        
+        {% endblock content %}
     
     <!-- ==================================  START FOOTER ================================== -->
-        {% include 'store/parts/footer.html' %}
+    {% include 'store/parts/footer.html' %}
     <!-- ==================================  END FOOTER ================================== -->
-
+    <script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'store/js/jQuery-3.6.3.js' %}"></script>
 </body>
 </html>
