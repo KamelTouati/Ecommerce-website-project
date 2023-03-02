@@ -5,6 +5,8 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.views.decorators.csrf import csrf_exempt
+import datetime
 
 # Create your views here.
 
@@ -46,6 +48,7 @@ def cart(request):
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render (request, 'store/pages/cart.html', context)
 
+@csrf_exempt
 def checkout(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -83,6 +86,32 @@ def updateItem(request):
     if orderItem.quantity <= 0 : 
         orderItem.delete()
     return JsonResponse('Item was added', safe= False)
+
+@csrf_exempt
+def processOrder(request):
+    transaction_id = datetime.datetime.now().timestamp()
+    # print('data:', request.body)
+    data = json.loads(request.body)
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+        if total == order.get_cart_total:
+            order.complete = True
+        order.save()
+        if order.shipping == True:
+            Shippingaddress.objects.create(
+                customer = customer,
+                order = order, 
+                address = data['shipping']['address'],
+                city = data['shipping']['city'],
+                state = data['shipping']['state'],
+                zipcode = data['shipping']['zipcode'],
+            )
+    else:
+        print('user is not logged in')
+    return JsonResponse('payment complete', safe= False)
 
 def login_view(request):
     if request.method == 'POST':
