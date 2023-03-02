@@ -14,7 +14,7 @@
             <table class="table">
                 <tr>
                     <th><h5>Items: <strong>{{order.get_cart_items}}</strong></h5></th>
-                    <th><h5>Total:<strong>${{order.get_cart_total|floatformat:2</strong></h5></th>
+                    <th><h5>Total:<strong>{{order.get_cart_total|floatformat:2}}$</strong></h5></th>
                     <th>
                         <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
                     </th>
@@ -40,8 +40,8 @@
                 <div style="flex:1">
                     <p class="quantity d-inline-block">{{item.quantity}}</p>
                     <div class="quantity d-inline-block">
-                        <i class="fa-solid fa-arrow-up chg-quantity"></i>
-                        <i class="fa-solid fa-arrow-down chg-quantity"></i>
+                        <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-up chg-quantity update-cart" data-action="add" style="cursor: pointer;"></i>
+                        <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-down chg-quantity update-cart" data-action="remove" style="cursor: pointer;"></i>
                         <!-- <img class="chg-quantity" src="{% static  'images/arrow-down.png' %}"> -->
                     </div>
                 </div>

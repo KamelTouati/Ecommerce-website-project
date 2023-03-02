@@ -8,7 +8,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/main.css' %}">
-
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+    </script>
     <title>Toutou Ecommerce</title>
 </head>
 <body>
@@ -22,6 +40,7 @@
     <!-- ==================================  START FOOTER ================================== -->
     {% include 'store/parts/footer.html' %}
     <!-- ==================================  END FOOTER ================================== -->
+    <script src="{% static 'store/js/cart.js' %}"></script>
     <script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'store/js/jQuery-3.6.3.js' %}"></script>
 </body>

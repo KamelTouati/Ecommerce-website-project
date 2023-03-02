@@ -8,10 +8,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only"></span></a>
-      </li>
-
     </ul>
     <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -26,7 +22,7 @@
       {% endif %}
       <a href="{% url 'cart' %}" class="mx-3">
         <i id="cart-icon" class="fa-solid fa-cart-shopping position-relative fs-5">
-          <span id="cart-total" class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1">0</span>
+          <span id="cart-total" class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1">{{cartItems}}</span>
           <!-- <p id="cart-total" class="position-absolute top-0 right-0">0</p> -->
         </i>
       </a>

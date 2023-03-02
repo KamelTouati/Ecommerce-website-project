@@ -43,8 +43,9 @@
         </div>
 
         <br>
-        <div class="box-element hidden" id="payment-info">
+        <div class="box-element invisible" id="payment-info">
             <small>Paypal Options</small>
+            <button id="make-payment" class="btn btn-outline-dark">Make payment</button>
         </div>
         
     </div>
@@ -59,13 +60,35 @@
             <div class="cart-row d-flex">
                 <div style="flex:2"><img class="row-image" style="width:50px; " src="{{item.product.imageURL}}"></div>
                 <div style="flex:2"><p>{{item.product.name}}</p></div>
-                <div style="flex:1"><p>${{item.product.price|floatformat:2}}</p></div>
+                <div style="flex:1"><p>{{item.product.price|floatformat:2}}$</p></div>
                 <div style="flex:1"><p>{{item.quantity}}</p></div>
             </div>
             {% endfor%}
             <h5>Items:   {{order.get_cart_items}}</h5>
-            <h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
+            <h5>Total:   {{order.get_cart_total|floatformat:2}}$</h5>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    var Shipping = '{{order.shipping}}'
+    if (Shipping == 'False') {
+        document.getElementById('shipping-info').innerHTML = '';
+    }
+
+    var form = document.getElementById('form');
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        console.log('form submitted...')
+        document.getElementById('form-button').classList.add("invisible");
+        document.getElementById('payment-info').classList.remove("invisible");
+    })
+    document.getElementById('make-payment').addEventListener("click", function(e){
+        submitFormData
+    })
+
+    function submitFormData() {
+        console.log("payment button clicked")
+    }
+</script>
 {% endblock content %}

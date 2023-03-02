@@ -6,15 +6,18 @@
 {% if user.is_authenticated %}
     <h1 class="container mt-2">Hi, {{user.username}}</h1>
 {% endif %}
-<div class="row m-4 container mx-auto">
+<div class="row m-4 mx-auto justify-content-center">
     {% for product in products %}
-    <div class="col-lg-3 my-2 card">
+    <div class="col-lg-2 mx-3 my-2 card" style="
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);">
         <img class="thumbnail card-img-top" src="{{product.imageURL}}">
         <div class="box-element product mt-auto mb-3">
             <h6><strong>{{product.name}}</strong></h6>
             <hr>
 
-            <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
             <a class="btn btn-outline-success" href="#">View</a>
             <h5 style="display: inline-block; float: right"><strong>{{product.price|floatformat:2}}$</strong></h4>
 
