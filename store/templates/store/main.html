@@ -26,6 +26,34 @@
             return cookieValue;
         }
         const csrftoken = getToken('csrftoken');
+
+        function getCookie(name){
+            //split cookie string and get all individual name=value pairs in an array
+            var cookieArr= document.cookie.split(";");
+            //loop through the array elements
+            for(var i = 0; i < cookieArr.length; i++){
+                var cookiepair = cookieArr[i].split("=");
+
+                /* removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+                if (name == cookiepair[0].trim()) {
+                    // decode the cookie value and return
+                    return decodeURIComponent(cookiepair[1]) 
+                }
+            }
+
+            //return null if not found 
+            return null
+        }
+        var cart = JSON.parse(getCookie('cart'))
+        // console.log('cart:', cart)
+
+        if(cart == undefined) {
+            cart = {}
+            console.log('cart created:', cart)
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+        }
+        // console.log('cart:', cart)
     </script>
     <title>Toutou Ecommerce</title>
 </head>
@@ -34,7 +62,7 @@
     {% include 'store/parts/navbar.html' %}
     <!-- ==================================  END NAVBAR ================================== -->
         {% block content %}
-        
+            
         {% endblock content %}
     
     <!-- ==================================  START FOOTER ================================== -->
