@@ -12,12 +12,21 @@ from .utils import cookieCart, cartData, guestOrder
 # Create your views here.
 
 def store(request):
-    products = Product.objects.all()
+    search = Product.objects.all()
+    # print(search)
+    title = None
+    if 'search_name' in request.GET:
+        title = request.GET['search_name']
+        if title: 
+            search = search.filter(name__icontains=title)
+
+    products = search
+    categories = Category.objects.all()
     data = cartData(request)
     cartItems = data['cartItems']
     # order = data['order']
     # items = data['items']
-    context = {'products': products, 'cartItems': cartItems}
+    context = {'products': products, 'categories': categories, 'cartItems': cartItems}
     return render (request, 'store/pages/store.html', context)
 
 def cart(request):
@@ -76,6 +85,14 @@ def processOrder(request):
         order.complete = True
     order.save()
     return JsonResponse('payment complete', safe= False)
+
+def viewProduct(request, id):
+    product_id = Product.objects.get(id=id)
+    print(product_id)
+    context = {
+        'product_id' : product_id,
+    }
+    return render(request, 'store/pages/viewProduct.html', context)
 
 def login_view(request):
     if request.method == 'POST':
