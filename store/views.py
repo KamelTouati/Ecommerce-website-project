@@ -1,6 +1,6 @@
 import json
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import * 
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -87,10 +87,14 @@ def processOrder(request):
     return JsonResponse('payment complete', safe= False)
 
 def viewProduct(request, id):
-    product_id = Product.objects.get(id=id)
-    print(product_id)
+    data = cartData(request)
+    cartItems = data['cartItems']
+    product = get_object_or_404(Product, pk=id)
+    products = Product.objects.all
     context = {
-        'product_id' : product_id,
+        'product' : product,
+        'cartItems': cartItems,
+        'products': products,
     }
     return render(request, 'store/pages/viewProduct.html', context)
 

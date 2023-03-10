@@ -73,10 +73,20 @@
     <script src="{% static 'store/js/jQuery-3.6.3.js' %}"></script>
     <script>
         {% for product in products %}
+
             $(".category{{product.category.id}}").click(function(){ 
-            $(".productHide").hide();
-            $(".product{{product.category.id}}").show();
-            });
+                console.log($("{{product.category.name}}"));
+                $(".productHide").hide();
+                $(".product{{product.category.id}}").show();
+            }); 
+        {% endfor %}
+        {% for category in categories %}
+        $(".category{{category.id}}").click(function(){ 
+            if('{{category.name}}' == 'All'){
+                $(".productHide").hide();
+                $(".All").show();
+            }
+        });
         {% endfor %}
     </script>
 </body>
