@@ -8,7 +8,7 @@ class Category(models.Model):
         return self.name
     
 class Customer(models.Model):
-    User = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=254, null=True)
     email = models.EmailField(max_length=254, null=True)
 

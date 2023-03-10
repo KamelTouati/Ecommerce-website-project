@@ -128,6 +128,8 @@ def register(request):
             else: 
                 user = User.objects.create_user(username = username, email = email, password = password)
                 user.save()
+                customer = Customer.objects.get_or_create(user = user, name = user.username, email = user.email)
+                # customer.save()
                 print("save new user")
                 return redirect('login')
         else: 
