@@ -89,5 +89,16 @@ class Shippingaddress(models.Model):
     def __str__(self):
             return self.address
 
+class Comment(models.Model):
+    name = models.CharField(max_length=254, null=True)
+    email = models.EmailField(max_length=254, null=True)
+    body = models.TextField(max_length=254,null=True)
+    comment_date = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
 
+    class Meta:
+        ordering = ('-comment_date',)
 
+    def __str__(self):
+            return '{} add a comment to {} product'.format(self.name, self.product)

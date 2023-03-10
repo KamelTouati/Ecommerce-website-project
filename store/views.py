@@ -86,17 +86,19 @@ def processOrder(request):
     order.save()
     return JsonResponse('payment complete', safe= False)
 
-def viewProduct(request, id):
+def view_product(request, id):
     data = cartData(request)
     cartItems = data['cartItems']
     product = get_object_or_404(Product, pk=id)
     products = Product.objects.all
+    comments = product.comments.filter(active=True)
     context = {
         'product' : product,
         'cartItems': cartItems,
         'products': products,
+        'comments': comments,
     }
-    return render(request, 'store/pages/viewProduct.html', context)
+    return render(request, 'store/pages/view_product.html', context)
 
 def login_view(request):
     if request.method == 'POST':

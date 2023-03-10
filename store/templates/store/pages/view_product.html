@@ -12,13 +12,15 @@
     <div class="col-lg-6 mt-lg-5">
         <h3>{{product.name}}</h3>
         <h6>{{product.description}}</h6>
+        <h3>${{product.price}}</h3>
         <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
     </div>
     <div class="col-lg-3">
+        <h5>Suggestion products</h5>
         {% for product_suggest in products %}
             {% if product_suggest.category == product.category and product_suggest.id != product.id%}
                 <a href="{% url 'view-product' product_suggest.id %}">
-                    <div class="col-lg-3 px-2 mx-4 my-2 card productHide product{{product_suggest.category.id}} All" style="
+                    <div class="col-lg-3 px-2 my-2 card productHide product{{product_suggest.category.id}} All" style="
                         box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
                         backdrop-filter: blur(5px);
                         border: 1px solid rgba(255, 255, 255, 0.3);">
@@ -34,5 +36,10 @@
         {% endfor%}
     </div>
     </div>
+    <h4>Comments :</h4>
+    {% for comment in comments %}
+        <small>{{comment.name}} in {{comment.comment_date|date:'d-m-Y'}}</small>
+        <p>{{comment.body}}</p>
+    {% endfor %}
 </div>
 {% endblock content %}
