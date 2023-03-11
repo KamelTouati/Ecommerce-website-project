@@ -8,7 +8,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 from .utils import cookieCart, cartData, guestOrder
-
+from .forms import NewComment
 # Create your views here.
 
 def store(request):
@@ -92,12 +92,24 @@ def view_product(request, id):
     product = get_object_or_404(Product, pk=id)
     products = Product.objects.all
     comments = product.comments.filter(active=True)
+    comment_form = NewComment() 
+    new_commment = None
     context = {
-        'product' : product,
+        'product': product,
         'cartItems': cartItems,
         'products': products,
         'comments': comments,
+        'comment_form': comment_form,
     }
+    if request.method == 'POST':
+        comment_form = NewComment(data = request.POST)
+        if comment_form.is_valid():
+            new_commment = comment_form.save(commit=False)
+            new_commment.product = product
+            new_commment.save()
+            comment_form = NewComment()
+    else: 
+        comment_form = NewComment()
     return render(request, 'store/pages/view_product.html', context)
 
 def login_view(request):

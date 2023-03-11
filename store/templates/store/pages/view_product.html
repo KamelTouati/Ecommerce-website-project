@@ -1,7 +1,7 @@
 {% extends 'store/main.html' %}
 
 {% load static %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="">
@@ -17,7 +17,7 @@
     </div>
     <div class="col-lg-3">
         <h5>Suggestion products</h5>
-        {% for product_suggest in products %}
+        {% for product_suggest in products|slice:'4' %}
             {% if product_suggest.category == product.category and product_suggest.id != product.id%}
                 <a href="{% url 'view-product' product_suggest.id %}">
                     <div class="col-lg-3 px-2 my-2 card productHide product{{product_suggest.category.id}} All" style="
@@ -41,5 +41,12 @@
         <small>{{comment.name}} in {{comment.comment_date|date:'d-m-Y'}}</small>
         <p>{{comment.body}}</p>
     {% endfor %}
+    <h3>add a new comment: </h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{comment_form|crispy}}
+        <!-- {% crispy comment_form %} -->
+        <input class="btn btn-secondary" type="submit" value="submit">
+    </form>
 </div>
 {% endblock content %}
