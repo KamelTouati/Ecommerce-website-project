@@ -1,32 +1,29 @@
 {% load static %}
   
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-  <a class="navbar-brand mx-2" href="{% url 'store' %}">TOUTOU Ecom</a>
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto">
-    </ul>
-    <form method="GET" action="{% url 'store' %}" class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_name">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <div class="form-inline my-2 my-lg-0 mx-2">
-      {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}" class="btn btn-warning">Logout</a>
-      {% else %}
-        <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
-        <a href="{% url 'register' %}" class="btn btn-warning">Sign up</a>
-      {% endif %}
-      <a href="{% url 'cart' %}" class="mx-3">
-        <i id="cart-icon" class="fa-solid fa-cart-shopping position-relative fs-5">
-          <span id="cart-total" class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1">{{cartItems}}</span>
-          <!-- <p id="cart-total" class="position-absolute top-0 right-0">0</p> -->
-        </i>
-      </a>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-2" href="{% url 'store' %}">TOUTOU Ecom</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex ms-auto" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <div class="form-inline my-2 my-lg-0 mx-2">
+        {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}" class="btn btn-warning">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
+          <a href="{% url 'register' %}" class="btn btn-warning">Sign up</a>
+        {% endif %}
+        <a href="{% url 'cart' %}" class="mx-3">
+          <i id="cart-icon" class="fa-solid fa-cart-shopping position-relative fs-5">
+            <span id="cart-total" class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1">{{cartItems}}</span>
+            <!-- <p id="cart-total" class="position-absolute top-0 right-0">0</p> -->
+          </i>
+        </a>
     </div>
   </div>
 </nav>
