@@ -4,23 +4,33 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="">
-    <div class="row">
-    <div class="col-lg-3 d-flex justify-content-center  mt-lg-5">
+<div class="container">
+    <div class="row my-5">
+    <div class="col-lg-3">
         <img class="img-thumbnail" src="{{product.imageURL}}" alt="">
     </div>
-    <div class="col-lg-6 mt-lg-5">
+    <div class="col-lg-7 my-3">
         <h3>{{product.name}}</h3>
         <h6>{{product.description}}</h6>
         <h3>${{product.price}}</h3>
-        <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+        <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart d-block">Add to Cart</button>
+        {% for item in items %}
+            {% if item.product.id == product.id %}
+                <div class="btn btn-secondary mt-3">
+                    <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-up chg-quantity update-cart" data-action="add" style="cursor: pointer;"></i>
+                    Quantity 
+                    <span class="badge text-bg-secondary">{{item.quantity}}</span>
+                    <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-down chg-quantity update-cart" data-action="remove" style="cursor: pointer;"></i>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-2 alert alert-secondary ">
         <h5>Suggestion products</h5>
         {% for product_suggest in products|slice:'4' %}
             {% if product_suggest.category == product.category and product_suggest.id != product.id%}
-                <a href="{% url 'view-product' product_suggest.id %}">
-                    <div class="col-lg-3 px-2 my-2 card productHide product{{product_suggest.category.id}} All" style="
+                <a href="{% url 'view-product' product_suggest.id %}" style="text-decoration: none;">
+                    <div class="px-2 my-2 card productHide product{{product_suggest.category.id}} All" style="
                         box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
                         backdrop-filter: blur(5px);
                         border: 1px solid rgba(255, 255, 255, 0.3);">
@@ -36,17 +46,27 @@
         {% endfor%}
     </div>
     </div>
-    <h4>Comments :</h4>
-    {% for comment in comments %}
-        <small>{{comment.name}} in {{comment.comment_date|date:'d-m-Y'}}</small>
-        <p>{{comment.body}}</p>
-    {% endfor %}
-    <h3>add a new comment: </h3>
-    <form method="POST">
-        {% csrf_token %}
-        {{comment_form|crispy}}
-        <!-- {% crispy comment_form %} -->
-        <input class="btn btn-secondary" type="submit" value="submit">
-    </form>
+    <div class="mt-lg-5">
+        <h4>Comments :</h4>
+        {% if comments %} 
+            {% for comment in comments %}
+            <div class="alert alert-secondary">
+                <small>{{comment.name}} in {{comment.comment_date|date:'d-m-Y'}}</small>
+                <p>{{comment.body}}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-secondary">
+                there is no comments for this products
+            </div>
+        {% endif %}
+        <h4>add a new comment: </h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{comment_form|crispy}}
+            <!-- {% crispy comment_form %} -->
+            <input class="btn btn-secondary" type="submit" value="submit">
+        </form>
+    </div>
 </div>
 {% endblock content %}

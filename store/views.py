@@ -94,12 +94,14 @@ def view_product(request, id):
     comments = product.comments.filter(active=True)
     comment_form = NewComment() 
     new_commment = None
+    items = data['items']
     context = {
         'product': product,
         'cartItems': cartItems,
         'products': products,
         'comments': comments,
         'comment_form': comment_form,
+        'items': items,
     }
     if request.method == 'POST':
         comment_form = NewComment(data = request.POST)
