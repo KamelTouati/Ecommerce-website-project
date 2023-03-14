@@ -8,16 +8,10 @@
     <ul class="list-unstyled ps-0">
       {% for category in categories %}
       <li class="mb-1 category{{category.id}}">
+        <i class="fa-light fa-laptop-mobile"></i>
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
           {{category.name}}
         </button>
-        <!-- <div class="collapse" id="home-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">t-shirt</a></li>
-            <li><a href="#" class="link-dark rounded">Updates</a></li>
-            <li><a href="#" class="link-dark rounded">Reports</a></li>
-          </ul>
-        </div> -->
       </li>
       {% endfor %}
       <li class="border-top my-3"></li>

@@ -13,7 +13,6 @@
         <h3>{{product.name}}</h3>
         <h6>{{product.description}}</h6>
         <h3>${{product.price}}</h3>
-        <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart d-block">Add to Cart</button>
         {% for item in items %}
             {% if item.product.id == product.id %}
                 <div class="btn btn-secondary mt-3">
@@ -24,6 +23,7 @@
                 </div>
             {% endif %}
         {% endfor %}
+        <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart d-block mt-3">Add to Cart</button>
     </div>
     <div class="col-lg-2 alert alert-secondary ">
         <h5>Suggestion products</h5>
