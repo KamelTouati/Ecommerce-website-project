@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="flex-shrink-0 p-3 bg-white h-100">
+<div class="flex-shrink-0 p-3 h-100 sticky-top border-end" style="background-color: #f6f6f6 !important;">
     <!-- <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom"> -->
     <!-- <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg> -->
     <span class="fs-5 fw-semibold">Categories</span>
@@ -23,12 +23,12 @@
         <div class="collapse" id="account-collapse">
           {% if user.is_authenticated %}
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="{% url 'logout' %}" class="link-dark rounded">Logout</a></li>
+            <li><a style="text-decoration: none;" href="{% url 'logout' %}" class="link-dark rounded">Logout</a></li>
           </ul>
           {% else %}
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="{% url 'login' %}" class="link-dark rounded">Login</a></li>
-            <li><a href="{% url 'register' %}" class="link-dark rounded">Sign up</a></li>
+            <li><a style="text-decoration: none;" href="{% url 'login' %}" class="link-dark rounded">Login</a></li>
+            <li><a style="text-decoration: none;" href="{% url 'register' %}" class="link-dark rounded">Sign up</a></li>
           </ul>
           {% endif %}
         </div>

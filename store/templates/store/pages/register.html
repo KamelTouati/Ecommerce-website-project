@@ -13,30 +13,43 @@
     <title>Toutou Ecom</title>
 </head>
 <body>
-    {% for message in messages %}
-    <h5 style="color:red; text-align: center;">{{message}}</h5>
-    {% endfor %}
-    <form method="POST" action="">
-        {% csrf_token %}
-        <div class="form-row d-flex align-items-md-center flex-column">
-            <div div class="form-group col-md-4">
-                <label for="inputEmail4">Username</label>
-                <input type="text" class="form-control" placeholder="Username" name="username">
+    <div class="row" style="height: 100vh;">
+        <div class="col-lg-8 d-flex align-items-center justify-content-center">
+            <div>
+                {% for message in messages %}
+                <h5 style="color:red; text-align: center;">{{message}}</h5>
+                {% endfor %}
+                <h1>Create an account Now</h1>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="form-row d-flex align-items-md-center flex-column">
+                        <div div class="form-group">
+                            <label for="inputEmail4">Username</label>
+                            <input type="text" class="form-control" placeholder="Username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password" minlength="8">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword4">Confirm Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Confirm Password" name="confirmpassword" minlength="8">
+                        </div>
+                    <button type="submit" class="btn btn-primary mt-2 d-block">Sign in</button>
+                    <a href="{% url 'store' %}" class="btn btn-outline-primary mt-2 d-block">Return to home page</a>
+                    <hr>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary mt-2 d-block">You have an account ? Login now</a>
+                </div>
+                </form>
             </div>
-            <div class="form-group col-md-4">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password" minlength="8">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputPassword4">Confirm Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Confirm Password" name="confirmpassword" minlength="8">
-            </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
         </div>
-    </form>
+        <div class="col-lg-4 d-flex align-items-center border-start" style="background-color: #f6f6f6 !important;">
+            <img class="w-100" src="{% static 'store/images/man-enjoying-shopping-discount.svg' %}" alt="">
+        </div>
+    </div>
 </body>
 </html>
