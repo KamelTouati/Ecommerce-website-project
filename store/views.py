@@ -114,6 +114,14 @@ def view_product(request, id):
         comment_form = NewComment()
     return render(request, 'store/pages/view_product.html', context)
 
+def profile(request, id):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    context = {
+        'cartItems': cartItems,
+    }
+    return render(request, 'store/pages/profile.html', context)
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']

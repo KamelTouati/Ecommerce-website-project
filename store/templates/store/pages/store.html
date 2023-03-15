@@ -8,10 +8,16 @@
     <div class="col-lg-2">
         {% include 'store/parts/sidebar.html' %}
     </div>
-    <div class="col-10 mx-auto col-lg-10">
+    <div class="col-10 mx-auto">
         {% if user.is_authenticated %}
             <h1 class="container mt-2">Hi, {{user.username}}</h1>
         {% endif %}
+        <div class="mt-5">
+            {% for category in categories %}
+                <button type="button" class="btn btn-light border category{{category.id}}">{{category.name}}</button>
+            {% endfor %}
+        </div>
+
         <div class="row m-4 mx-auto justify-content-center">
             {% for product in products %}
             <div class="col-lg-2 px-2 mx-4 my-2 card productHide product{{product.category.id}} All" style="
