@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 import datetime
 from .utils import cookieCart, cartData, guestOrder
 from .forms import NewComment
+from django.contrib.auth.decorators import login_required 
 # Create your views here.
 
 def store(request):
@@ -114,6 +115,7 @@ def view_product(request, id):
         comment_form = NewComment()
     return render(request, 'store/pages/view_product.html', context)
 
+@login_required(login_url='login')
 def profile(request, id):
     data = cartData(request)
     cartItems = data['cartItems']
