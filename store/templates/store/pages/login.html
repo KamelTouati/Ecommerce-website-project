@@ -1,45 +1,91 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'store/js/jQuery-3.6.3.js' %}"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'store/css/main.css' %}">
-    <title>Toutou Ecom</title>
-</head>
-<body>
-  <div class="row" style="height: 100vh;">
-    <div class="col-lg-8 d-flex align-items-center justify-content-center">
-      <div>
-        {% for message in messages %}
-        <h5 style="color:red; text-align: center;">{{message}}</h5>
-        {% endfor %}
-        <h1>Login Now</h1>
-        <form method="POST" action="">
-          {% csrf_token %}
-          <div class="form-group">
-            <label for="inputEmail4">Username</label>
-            <input type="text" class="form-control" placeholder="Username" name="username">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" >
-          </div>
-          <button type="submit" class="btn btn-primary mt-2 d-block">Submit</button>
-          <a href="{% url 'store' %}" class="btn btn-outline-primary mt-2 d-block">Return to home page</a>
-          <a href="{% url 'login' %}" class="btn btn-outline-primary mt-2 d-block">don't have an account ? Register now</a>
-        </form>
-      </div>
-    </div>
-    <div class="col-lg-4 d-flex align-items-center border-start" style="background-color: #f6f6f6 !important;">
-      <img class="w-100" src="{% static 'store/images/man-doing-window-shopping.svg' %}" alt="">
-    </div>
-  </div>
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'store/js/jQuery-3.6.3.js' %}"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'store/css/bootstrap.min.css' %}"
+        />
+        <link rel="stylesheet" href="{% static 'store/css/main.css' %}" />
+        <title>Toutou Ecom</title>
+    </head>
+    <body class="overflow-hidden">
+        <div class="row" style="height: 100vh">
+            <div
+                class="col-lg-6 d-flex align-items-center justify-content-center"
+            >
+                <div class="ms-lg-5" style="z-index: 10;">
+                    {% for message in messages %}
+                    <h5 style="color: red; text-align: center">{{message}}</h5>
+                    {% endfor %}
+                    <h1>Login Now</h1>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="inputEmail4">Username</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Username"
+                                name="username"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="exampleInputPassword1"
+                                placeholder="Password"
+                                name="password"
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn btn-primary mt-2 d-block"
+                        >
+                            Submit
+                        </button>
+                        <!-- <a href="{% url 'store' %}" class="btn btn-outline-primary mt-2 d-block">Return to home page</a> -->
+                        <a href="{% url 'register' %}" style="text-decoration: none;"
+                            >don't have an account ? Register now</a
+                        >
+                    </form>
+                </div>
+                <picture class="position-absolute bottom-0">
+                    <source
+                        srcset="
+                            https://tailwindcss.com/_next/static/media/docs@30.8b9a76a2.avif
+                        "
+                        type="image/avif"
+                    />
+                    <img
+                        src="/_next/static/media/docs@tinypng.d9e4dcdc.png"
+                        alt=""
+                        class="w-[71.75rem] flex-none max-w-none dark:hidden"
+                        decoding="async"
+                    />
+                </picture>
+            </div>
+            <div
+                class="col-lg-6 d-flex align-items-center border-start"
+                style="background-color: #f6f6f6 !important; z-index: 20;"
+            >
+                <img
+                    class="w-100"
+                    src="{% static 'store/images/man-doing-window-shopping.svg' %}"
+                    alt=""
+                />
+            </div>
+        </div>
+    </body>
 </html>
