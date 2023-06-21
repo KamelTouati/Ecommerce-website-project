@@ -13,9 +13,13 @@
             <h1 class="container mt-2">Hi, {{user.username}}</h1>
         {% endif %}
         <div class="mt-5">
-            {% for category in categories %}
+            <!-- {% for category in categories %}
                 <button type="button" class="btn btn-light border category{{category.id}}">{{category.name}}</button>
-            {% endfor %}
+            {% endfor %} -->
+            <a href="{% url 'store' %}?max=100" type="button" class="btn btn-light border"><100$</a>
+            <a href="{% url 'store' %}?min=100&max=200" type="button" class="btn btn-light border">100$ - 200$</a>
+            <a href="{% url 'store' %}?min=200&max=500" type="button" class="btn btn-light border">200$ - 500$</a>
+            <a href="{% url 'store' %}?min=500" type="button" class="btn btn-light border">>500$</a>
         </div>
 
         <div class="row m-4 mx-auto justify-content-center">

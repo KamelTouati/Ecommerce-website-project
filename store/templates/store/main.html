@@ -75,7 +75,6 @@
     <script src="{% static 'store/js/all.min.js' %}"></script>
     <script>
         {% for product in products %}
-
             $(".category{{product.category.id}}").click(function(){ 
                 console.log($("{{product.category.name}}"));
                 $(".productHide").hide();

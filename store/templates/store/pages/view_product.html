@@ -6,24 +6,50 @@
 {% block content %}
 <div class="container">
     <div class="row my-5">
-    <div class="col-lg-3">
-        <img class="img-thumbnail" src="{{product.imageURL}}" alt="">
-    </div>
-    <div class="col-lg-7 my-3">
-        <h3>{{product.name}}</h3>
-        <h6>{{product.description}}</h6>
-        <h3>${{product.price}}</h3>
-        {% for item in items %}
-            {% if item.product.id == product.id %}
-                <div class="btn btn-secondary mt-3">
-                    <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-up chg-quantity update-cart" data-action="add" style="cursor: pointer;"></i>
-                    Quantity 
-                    <span class="badge text-bg-secondary">{{item.quantity}}</span>
-                    <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-down chg-quantity update-cart" data-action="remove" style="cursor: pointer;"></i>
+
+    <div class="col-lg-10 row">
+
+        <div class="col-lg-3">
+            <img class="img-thumbnail" src="{{product.imageURL}}" alt="">
+        </div>
+        <div class="col-lg-7 my-3">
+            <h3>{{product.name}}</h3>
+            <h6>{{product.description}}</h6>
+            <h3>${{product.price}}</h3>
+            {% for item in items %}
+                {% if item.product.id == product.id %}
+                    <div class="btn btn-secondary mt-3">
+                        <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-up chg-quantity update-cart" data-action="add" style="cursor: pointer;"></i>
+                        Quantity 
+                        <span class="badge text-bg-secondary">{{item.quantity}}</span>
+                        <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-down chg-quantity update-cart" data-action="remove" style="cursor: pointer;"></i>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart d-block mt-3">Add to Cart</button>
+        </div>
+        <div class="mt-lg-5">
+            <h4>Comments :</h4>
+            {% if comments %} 
+                {% for comment in comments %}
+                <div class="alert alert-secondary">
+                    <small>{{comment.name}} in {{comment.comment_date|date:'d-m-Y'}}</small>
+                    <p>{{comment.body}}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-secondary">
+                    there is no comments for this product
                 </div>
             {% endif %}
-        {% endfor %}
-        <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart d-block mt-3">Add to Cart</button>
+            <h4>add a new comment: </h4>
+            <form method="POST">
+                {% csrf_token %}
+                {{comment_form|crispy}}
+                <!-- {% crispy comment_form %} -->
+                <input class="btn btn-secondary" type="submit" value="submit">
+            </form>
+        </div>
     </div>
     <div class="col-lg-2 alert alert-secondary ">
         <h5>Suggestion products</h5>
@@ -45,28 +71,6 @@
             {% endif %}
         {% endfor%}
     </div>
-    </div>
-    <div class="mt-lg-5">
-        <h4>Comments :</h4>
-        {% if comments %} 
-            {% for comment in comments %}
-            <div class="alert alert-secondary">
-                <small>{{comment.name}} in {{comment.comment_date|date:'d-m-Y'}}</small>
-                <p>{{comment.body}}</p>
-            </div>
-            {% endfor %}
-        {% else %}
-            <div class="alert alert-secondary">
-                there is no comments for this product
-            </div>
-        {% endif %}
-        <h4>add a new comment: </h4>
-        <form method="POST">
-            {% csrf_token %}
-            {{comment_form|crispy}}
-            <!-- {% crispy comment_form %} -->
-            <input class="btn btn-secondary" type="submit" value="submit">
-        </form>
     </div>
 </div>
 {% endblock content %}

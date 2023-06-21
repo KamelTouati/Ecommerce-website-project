@@ -13,15 +13,26 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def store(request):
+    # Filter by search
     search = Product.objects.all()
-    # print(search)
     title = None
     if 'search_name' in request.GET:
         title = request.GET['search_name']
         if title: 
             search = search.filter(name__icontains=title)
-
     products = search
+
+    # Filter by price 
+    if request.method == 'GET':
+        min_price = request.GET.get('min', None)
+        max_price = request.GET.get('max', None)
+        if min_price and max_price:
+            products = products.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            products = products.filter(price__gte=min_price)
+        elif max_price:
+            products = products.filter(price__lte=max_price)
+
     categories = Category.objects.all()
     data = cartData(request)
     cartItems = data['cartItems']
