@@ -1,5 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
+from django.conf import settings
+# from django.contrib.auth.hashers import make_password
+# from django.utils import timezone
+
+
 # Create your models here.
 
 class Category(models.Model):
@@ -9,13 +14,9 @@ class Category(models.Model):
     class Meta:
         ordering = ('name',)
     
-class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=254, null=True)
-    email = models.EmailField(max_length=254, null=True)
+# class Customer(AbstractUser):
+    # user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
-    def __str__(self):
-        return self.name
 
 class Product(models.Model):
     name = models.CharField(max_length=254, null=True)
@@ -34,6 +35,18 @@ class Product(models.Model):
         except: 
             url = ''
         return url
+
+class Customer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    # password = models.CharField(max_length=128, default=make_password('default_password'))
+    # username = models.CharField(max_length=255, default=timezone.now)
+    name = models.CharField(max_length=254, null=True)
+    email = models.EmailField(max_length=254, null=True)
+    photo = models.ImageField(null=True, blank=True)
+    favorite_products = models.ManyToManyField(Product)
+    def __str__(self):
+        return self.name
+
     
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)

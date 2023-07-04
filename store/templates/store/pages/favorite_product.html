@@ -1,10 +1,7 @@
-{% extends 'store/main.html' %}
-
-{% load static %}
-
-
+{% extends 'store/main.html' %} 
+{% load static %} 
 {% block content %}
-<div class="row">
+  <div class="row">
     <div class="col-lg-2">
         {% include 'store/parts/sidebar.html' %}
     </div>
@@ -23,7 +20,7 @@
         </div>
 
         <div class="row m-4 mx-auto justify-content-center">
-            {% for product in products %}
+            {% for product in favorite_products %}
             <div class="col-lg-3 px-2 mx-4 my-2 card productHide product{{product.category.id}} All" style="
             box-shadow: 0 4px 30px rgb(0 0 0 / 10%); 
             backdrop-filter: blur(5px);
@@ -35,7 +32,7 @@
         
                     <button style="font-size: .9rem;" data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
                     <a class="btn btn-outline-success" style="font-size: .9rem;" href="{% url 'view-product' product.id %}">View</a>
-                    <a class="btn btn-outline-danger my-1" href="{% url 'add_to_favorites' product.id %}"><i class="fa-regular fa-heart"></i></a>
+                    <a class="btn btn-outline-danger my-1" href="{% url 'remove_from_favorites' product.id %}"><i class="fa-solid fa-heart"></i></a>
                     <h5 style="display: inline-block; float: right"><strong>{{product.price|floatformat:2}}$</strong></h4>
                 </div>
             </div>

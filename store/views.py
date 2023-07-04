@@ -126,6 +126,29 @@ def view_product(request, id):
         comment_form = NewComment()
     return render(request, 'store/pages/view_product.html', context)
 
+def add_to_favorites(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    if request.user.is_authenticated:
+        user_customer = request.user.customer
+        user_customer.favorite_products.add(product)
+        return render(request, 'store/pages/store.html')
+    
+def favorite_product(request):
+    if request.user.is_authenticated:
+        user_customer = request.user.customer
+        favorite_products = user_customer.favorite_products.all()
+        print('favorite_products: ', favorite_products)
+        return render(request, 'store/pages/favorite_product.html', {'favorite_products': favorite_products})
+
+def remove_from_favorites(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    user_customer = request.user.customer
+    user_customer.favorite_products.remove(product)
+    favorite_products = user_customer.favorite_products.all()
+    # return redirect('favorite_product')
+    return render(request, 'store/pages/favorite_product.html', {'favorite_products': favorite_products})
+
+
 @login_required(login_url='login')
 def profile(request, id):
     data = cartData(request)
@@ -183,3 +206,4 @@ def register(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+

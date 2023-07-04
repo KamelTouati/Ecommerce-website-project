@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +30,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+dotenv.load_dotenv()
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +45,31 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     "crispy_forms",
     "crispy_bootstrap5",
+    # 'django.contrib.sites', # must
+    # 'allauth', # must
+    # 'allauth.account', # must
+    # 'allauth.socialaccount', # must
+    # 'allauth.socialaccount.providers.google', # new
 ]
+
+
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,3 +167,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# AUTH_USER_MODEL = 'store.Customer'

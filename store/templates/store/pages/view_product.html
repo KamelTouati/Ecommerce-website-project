@@ -21,7 +21,11 @@
                     <div class="btn btn-secondary mt-3">
                         <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-up chg-quantity update-cart" data-action="add" style="cursor: pointer;"></i>
                         Quantity 
-                        <span class="badge text-bg-secondary">{{item.quantity}}</span>
+                        {% if item.quantity > 0 %}
+                            <span class="badge text-bg-secondary">{{item.quantity}}</span>
+                        {% elif item.quantity == '' %}
+                            <span class="badge text-bg-secondary">0</span>
+                        {% endif %}
                         <i data-product="{{item.product.id}}" class="fa-solid fa-arrow-down chg-quantity update-cart" data-action="remove" style="cursor: pointer;"></i>
                     </div>
                 {% endif %}

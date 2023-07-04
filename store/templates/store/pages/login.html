@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -23,7 +24,7 @@
             <div
                 class="col-lg-6 d-flex align-items-center justify-content-center"
             >
-                <div class="ms-lg-5" style="z-index: 10;">
+                <div class="ms-lg-5" style="z-index: 10">
                     {% for message in messages %}
                     <h5 style="color: red; text-align: center">{{message}}</h5>
                     {% endfor %}
@@ -56,9 +57,12 @@
                             Submit
                         </button>
                         <!-- <a href="{% url 'store' %}" class="btn btn-outline-primary mt-2 d-block">Return to home page</a> -->
-                        <a href="{% url 'register' %}" style="text-decoration: none;"
+                        <a
+                            href="{% url 'register' %}"
+                            style="text-decoration: none"
                             >don't have an account ? Register now</a
                         >
+
                     </form>
                 </div>
                 <picture class="position-absolute bottom-0">
@@ -78,7 +82,7 @@
             </div>
             <div
                 class="col-lg-6 d-flex align-items-center border-start"
-                style="background-color: #f6f6f6 !important; z-index: 20;"
+                style="background-color: #f6f6f6 !important; z-index: 20"
             >
                 <img
                     class="w-100"
